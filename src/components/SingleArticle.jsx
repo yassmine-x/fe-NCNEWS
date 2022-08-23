@@ -7,14 +7,27 @@ export default function SingleArticle() {
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
-    fetchSingleArticle(article_id).then((articlesArray) => {
-      setArticle(articlesArray);
+    fetchSingleArticle(article_id).then((articleObject) => {
+      setArticle(articleObject);
     });
   }, [article_id]);
 
   return (
     <div>
-      <h2>List of All Articles</h2>
+      <h2>
+        <ul>
+          <li className="no-bullet">
+            <h2 className="article-title">{article.title}</h2>
+          </li>
+          <li className="no-bullet">
+            <h3 className="author-name">{article.author}</h3>
+          </li>
+          <li className="no-bullet">{article.body}</li>
+          <li className="no-bullet comments">
+            comments:{article.comment_count}
+          </li>
+        </ul>
+      </h2>
     </div>
   );
 }
