@@ -1,5 +1,6 @@
 import { fetchArticles } from "../api";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [articles, setArticles] = useState([]);
@@ -13,10 +14,10 @@ export default function Home() {
   return (
     <div>
       <h2>List of All Articles</h2>
-      {articles.map(({ title }) => {
+      {articles.map(({ title, article_id, topic }) => {
         return (
           <li key={title} className="title-list">
-            {title}
+            <Link to={`/topics/${topic}/${article_id}`}>{title}</Link>
           </li>
         );
       })}
