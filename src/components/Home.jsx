@@ -1,15 +1,18 @@
 import { fetchArticles } from "../api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function Home() {
   const [articles, setArticles] = useState([]);
 
+  const { topic } = useParams();
+  console.log(topic);
   useEffect(() => {
-    fetchArticles().then((articlesArray) => {
+    fetchArticles(topic).then((articlesArray) => {
       setArticles(articlesArray);
     });
-  }, [setArticles]);
+  }, [topic]);
 
   return (
     <div>
