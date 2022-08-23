@@ -33,3 +33,15 @@
 .title {
   text-align: center;
 }
+
+.nav {
+  text-align: center;
+}
+
+.list-topics {
+  list-style-type: none;
+}
+
+.list {
+  text-align: center;
+}
