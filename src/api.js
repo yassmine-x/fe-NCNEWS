@@ -17,3 +17,5 @@ export const fetchTopics = () => {
       return data.topics;
     });
 };
+
+export const patchVotes = () => {};
