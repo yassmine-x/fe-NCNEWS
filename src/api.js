@@ -18,11 +18,21 @@ export const fetchTopics = () => {
     });
 };
 
+export const fetchSingleArticle = (article_id) => {
+  return axios
+    .get(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`)
+    .then(({ data }) => {
+      console.log(data.article);
+      return data.article;
+    });
+};
+
 export const patchVotes = (article_id) => {
-  return axios.patch(
-    `https://yassmine-app.herokuapp.com/api/articles/${article_id}`,
-    {
+  return axios
+    .patch(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`, {
       inc_votes: 1,
-    }
-  );
+    })
+    .then(({ data }) => {
+      return data;
+    });
 };

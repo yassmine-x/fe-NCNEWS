@@ -1,17 +1,33 @@
-import { patchVotes, fetchArticles } from "..api";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { patchVotes, fetchArticles } from "../api";
+import { useState, useEffect } from "react";
 
-const { article_id } = useParams();
-
-export default function IncVotes() {
-  patchVotes(article_id);
+export default function IncVotes({ article_id, setArticle }) {
   const [optimisticVotes, setOptimisticVotes] = useState(0);
   const [votes, setVotes] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
-  fetchArticles(article_id).then(({ votes }) => {
-    setVotes(votes);
-  });
+  function handleClick() {
+    setOptimisticVotes((currOptimisticVotes) => {
+      return currOptimisticVotes + 1;
+    });
+    patchVotes(article_id)
+      .then((article) => {
+        setArticle(article);
+        setOptimisticVotes(0);
+      })
+      .catch(() => {
+        return optimisticVotes - 1;
+      });
 
-  return <div>Votes: {votes + optimisticVotes}</div>;
+    fetchArticles(article_id).then(({ votes }) => {
+      setVotes(votes);
+    });
+  }
+
+  return (
+    <div>
+      <button onClick={handleClick}>Vote</button>
+      <p>Votes: {votes + optimisticVotes}</p>
+    </div>
+  );
 }
