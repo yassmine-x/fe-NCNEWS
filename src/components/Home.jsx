@@ -1,5 +1,6 @@
 import { fetchArticles } from "../api";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 export default function Home() {
@@ -15,11 +16,11 @@ export default function Home() {
 
   return (
     <div>
-      <h2>List of Articles</h2>
-      {articles.map(({ title }) => {
+      <h2>List of All Articles</h2>
+      {articles.map(({ title, article_id, topic }) => {
         return (
           <li key={title} className="title-list">
-            {title}
+            <Link to={`/topics/${topic}/${article_id}`}>{title}</Link>
           </li>
         );
       })}

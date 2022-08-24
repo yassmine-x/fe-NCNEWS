@@ -45,3 +45,21 @@
 .list {
   text-align: center;
 }
+
+.article-title {
+  text-align: center;
+  list-style-type: none;
+}
+
+.author-name {
+  list-style-type: none;
+  text-align: center;
+}
+
+.no-bullet {
+  list-style-type: none;
+}
+
+.comments {
+  text-align: center;
+}
