@@ -27,11 +27,15 @@ export default function SingleArticle() {
           <li className="no-bullet comments">
             comments:{article.comment_count}
           </li>
-          <li>
-            {" "}
-            <IncVotes article_id={article_id} setArticle={setArticle} />
-          </li>
         </ul>
+        <div>
+          {" "}
+          <IncVotes
+            article_id={article_id}
+            setArticle={setArticle}
+            votes={article.votes}
+          />
+        </div>
       </h2>
     </div>
   );

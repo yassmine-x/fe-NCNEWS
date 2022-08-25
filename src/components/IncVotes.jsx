@@ -1,10 +1,8 @@
-import { patchVotes, fetchArticles } from "../api";
-import { useState, useEffect } from "react";
+import { patchVotes, patchDownVotes } from "../api";
+import { useState } from "react";
 
-export default function IncVotes({ article_id, setArticle }) {
+export default function IncVotes({ article_id, setArticle, votes }) {
   const [optimisticVotes, setOptimisticVotes] = useState(0);
-  const [votes, setVotes] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   function handleClick() {
     setOptimisticVotes((currOptimisticVotes) => {
@@ -16,17 +14,28 @@ export default function IncVotes({ article_id, setArticle }) {
         setOptimisticVotes(0);
       })
       .catch(() => {
-        return optimisticVotes - 1;
+        setOptimisticVotes(0);
       });
+  }
 
-    fetchArticles(article_id).then(({ votes }) => {
-      setVotes(votes);
+  function handleClick2() {
+    setOptimisticVotes((currOptimisticVotes) => {
+      return currOptimisticVotes - 1;
     });
+    patchDownVotes(article_id)
+      .then((article) => {
+        setArticle(article);
+        setOptimisticVotes(0);
+      })
+      .catch(() => {
+        setOptimisticVotes(0);
+      });
   }
 
   return (
     <div>
       <button onClick={handleClick}>Vote</button>
+      <button onClick={handleClick2}>Down Vote</button>
       <p>Votes: {votes + optimisticVotes}</p>
     </div>
   );

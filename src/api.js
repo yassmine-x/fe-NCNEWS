@@ -36,3 +36,13 @@ export const patchVotes = (article_id) => {
       return data;
     });
 };
+
+export const patchDownVotes = (article_id) => {
+  return axios
+    .patch(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`, {
+      inc_votes: -1,
+    })
+    .then(({ data }) => {
+      return data;
+    });
+};
