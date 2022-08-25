@@ -10,6 +10,14 @@ export const fetchArticles = (topic) => {
     });
 };
 
+export const fetchTopics = () => {
+  return axios
+    .get("https://yassmine-app.herokuapp.com/api/topics")
+    .then(({ data }) => {
+      return data.topics;
+    });
+};
+
 export const fetchSingleArticle = (article_id) => {
   return axios
     .get(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`)
@@ -19,10 +27,22 @@ export const fetchSingleArticle = (article_id) => {
     });
 };
 
-export const fetchTopics = () => {
+export const patchVotes = (article_id) => {
   return axios
-    .get("https://yassmine-app.herokuapp.com/api/topics")
+    .patch(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`, {
+      inc_votes: 1,
+    })
     .then(({ data }) => {
-      return data.topics;
+      return data;
+    });
+};
+
+export const patchDownVotes = (article_id) => {
+  return axios
+    .patch(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`, {
+      inc_votes: -1,
+    })
+    .then(({ data }) => {
+      return data;
     });
 };
