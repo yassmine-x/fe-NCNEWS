@@ -1,10 +1,10 @@
 import { fetchSingleArticle } from "../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import IncVotes from "./IncVotes";
+import Comments from "./Comments";
 
-export default function SingleArticle() {
-  const { article_id, topic } = useParams();
+export default function SingleArticleWithComments() {
+  const { article_id } = useParams();
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
@@ -25,21 +25,12 @@ export default function SingleArticle() {
           </li>
           <li className="no-bullet">{article.body}</li>
           <li className="no-bullet comments">
-            <Link to={`/topics/${topic}/${article_id}/comments`}>
-              comments:
-            </Link>{" "}
+            comments:
             {article.comment_count}
           </li>
         </ul>
-        <div>
-          {" "}
-          <IncVotes
-            article_id={article_id}
-            setArticle={setArticle}
-            votes={article.votes}
-          />
-        </div>
       </h2>
+      <Comments article_id={article_id} />
     </div>
   );
 }

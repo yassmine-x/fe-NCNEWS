@@ -63,3 +63,8 @@
 .comments {
   text-align: center;
 }
+
+.user-image-comments {
+  max-height: 40px;
+  max-width: auto;
+}
