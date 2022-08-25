@@ -24,10 +24,12 @@ export default function Comments({ article_id }) {
             <p>{comment.name}</p>
             <p>{comment.body}</p>
             <p>votes:{comment.votes}</p>
-            <p></p>
           </div>
         );
       })}
     </ul>
   );
 }
+
+//if url contains "/comments",
+//render <Comments />

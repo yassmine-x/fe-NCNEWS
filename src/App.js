@@ -5,8 +5,6 @@ import Home from "./components/Home";
 import SingleArticle from "./components/SingleArticle";
 import Nav from "./components/Nav";
 import Topics from "./components/Topics";
-import ArticleWithComments from "./components/ArticleWithComments";
-import Comments from "./components/Comments";
 
 function App() {
   return (
@@ -20,7 +18,7 @@ function App() {
         <Route path="/topics/:topic" element={<Home />} />
         <Route
           path="/topics/:topic/:article_id/comments"
-          element={<ArticleWithComments />}
+          element={<SingleArticle />}
         />
       </Routes>
     </BrowserRouter>

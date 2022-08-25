@@ -2,6 +2,8 @@ import { fetchSingleArticle } from "../api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import IncVotes from "./IncVotes";
+import { Link } from "react-router-dom";
+import Comments from "./Comments";
 
 export default function SingleArticle() {
   const { article_id, topic } = useParams();
@@ -40,6 +42,14 @@ export default function SingleArticle() {
           />
         </div>
       </h2>
+      <p>
+        {" "}
+        {window.location.href.endsWith("/comments") ? (
+          <Comments article_id={article_id} />
+        ) : (
+          "hello"
+        )}
+      </p>
     </div>
   );
 }

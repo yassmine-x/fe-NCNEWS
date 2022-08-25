@@ -55,3 +55,9 @@ export const fetchComments = (article_id) => {
       return data.comments;
     });
 };
+
+//make a form
+//eventListener-> onChange ->set comment in state
+//onSubmit--->submit data to the database.
+//default user name
+//body of comment
