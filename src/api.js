@@ -56,6 +56,10 @@ export const fetchComments = (article_id) => {
     });
 };
 
+export const postCommentToDataBase = (info) => {
+  return axios.post();
+};
+
 //make a form
 //eventListener-> onChange ->set comment in state
 //onSubmit--->submit data to the database.

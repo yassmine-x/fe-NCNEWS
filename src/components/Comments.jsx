@@ -30,6 +30,3 @@ export default function Comments({ article_id }) {
     </ul>
   );
 }
-
-//if url contains "/comments",
-//render <Comments />
