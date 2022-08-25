@@ -7,7 +7,6 @@ export default function Home() {
   const [articles, setArticles] = useState([]);
 
   const { topic } = useParams();
-  console.log(topic);
   useEffect(() => {
     fetchArticles(topic).then((articlesArray) => {
       setArticles(articlesArray);

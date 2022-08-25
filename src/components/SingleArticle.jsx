@@ -1,6 +1,7 @@
 import { fetchSingleArticle } from "../api";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import IncVotes from "./IncVotes";
 
 export default function SingleArticle() {
   const { article_id, topic } = useParams();
@@ -30,6 +31,14 @@ export default function SingleArticle() {
             {article.comment_count}
           </li>
         </ul>
+        <div>
+          {" "}
+          <IncVotes
+            article_id={article_id}
+            setArticle={setArticle}
+            votes={article.votes}
+          />
+        </div>
       </h2>
     </div>
   );
