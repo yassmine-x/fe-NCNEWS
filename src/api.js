@@ -1,6 +1,15 @@
 import axios from "axios";
 
-export const fetchArticles = (topic) => {
+export const fetchArticles = (topic, query, ASCorDESC) => {
+  if (query) {
+    return axios
+      .get(`https://yassmine-app.herokuapp.com/api/articles`, {
+        params: { sort_by: query, order: ASCorDESC || null, topic: topic },
+      })
+      .then(({ data }) => {
+        return data.articles;
+      });
+  }
   return axios
     .get(`https://yassmine-app.herokuapp.com/api/articles`, {
       params: { topic: topic },
@@ -67,9 +76,3 @@ export const postCommentToDataBase = (article_id, commentInput) => {
     })
     .catch((err) => console.log(err));
 };
-
-//make a form
-//eventListener-> onChange ->set comment in state
-//onSubmit--->submit data to the database.
-//default user name
-//body of comment
