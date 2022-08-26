@@ -5,8 +5,10 @@ export default function PostComment({ article_id }) {
   const [commentInput, setCommentInput] = useState({});
   const [message, setMessage] = useState("");
 
+  let user = "tickle122";
+
   function handlesChange(event) {
-    setCommentInput({ user: "tickle122", body: event.target.value });
+    setCommentInput({ user: user, body: event.target.value });
   }
   function handlesSubmit(event) {
     event.preventDefault();
