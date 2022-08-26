@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import IncVotes from "./IncVotes";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
+import PostComment from "./PostComment";
 
 export default function SingleArticle() {
   const { article_id, topic } = useParams();
@@ -17,7 +18,7 @@ export default function SingleArticle() {
 
   return (
     <div>
-      <h2>
+      <section>
         <ul>
           <li className="no-bullet">
             <h2 className="article-title">{article.title}</h2>
@@ -32,6 +33,11 @@ export default function SingleArticle() {
             </Link>{" "}
             {article.comment_count}
           </li>
+          <li className="no-bullet">
+            <Link to={`/topics/${topic}/${article_id}/comments/post-comment`}>
+              post a comment
+            </Link>
+          </li>
         </ul>
         <div>
           {" "}
@@ -41,15 +47,21 @@ export default function SingleArticle() {
             votes={article.votes}
           />
         </div>
-      </h2>
-      <p>
+      </section>
+      <section>
+        {window.location.href.endsWith("/post-comment") ? (
+          <PostComment
+            article_id={article_id}
+            comment_count={article.comment_count}
+          />
+        ) : null}
+      </section>
+      <section>
         {" "}
         {window.location.href.endsWith("/comments") ? (
           <Comments article_id={article_id} />
-        ) : (
-          "hello"
-        )}
-      </p>
+        ) : null}
+      </section>
     </div>
   );
 }

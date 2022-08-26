@@ -14,7 +14,7 @@ export default function Comments({ article_id }) {
     <ul>
       {commentsArr.map((comment) => {
         return (
-          <div>
+          <div key={comment.comment_id}>
             <img
               className="user-image-comments"
               src={comment.avatar_url}
@@ -30,6 +30,3 @@ export default function Comments({ article_id }) {
     </ul>
   );
 }
-
-//if url contains "/comments",
-//render <Comments />
