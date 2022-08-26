@@ -18,7 +18,7 @@ export default function SingleArticle() {
 
   return (
     <div>
-      <h2>
+      <section>
         <ul>
           <li className="no-bullet">
             <h2 className="article-title">{article.title}</h2>
@@ -47,18 +47,21 @@ export default function SingleArticle() {
             votes={article.votes}
           />
         </div>
-      </h2>
-      <p>
+      </section>
+      <section>
         {window.location.href.endsWith("/post-comment") ? (
-          <PostComment />
+          <PostComment
+            article_id={article_id}
+            comment_count={article.comment_count}
+          />
         ) : null}
-      </p>
-      <p>
+      </section>
+      <section>
         {" "}
         {window.location.href.endsWith("/comments") ? (
           <Comments article_id={article_id} />
         ) : null}
-      </p>
+      </section>
     </div>
   );
 }

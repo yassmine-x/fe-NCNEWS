@@ -56,8 +56,16 @@ export const fetchComments = (article_id) => {
     });
 };
 
-export const postCommentToDataBase = (info) => {
-  return axios.post();
+export const postCommentToDataBase = (article_id, commentInput) => {
+  return axios
+    .post(
+      `https://yassmine-app.herokuapp.com/api/articles/${article_id}/comments`,
+      commentInput
+    )
+    .then(({ data }) => {
+      return data.newComment;
+    })
+    .catch((err) => console.log(err));
 };
 
 //make a form
