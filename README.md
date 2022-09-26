@@ -1,6 +1,6 @@
 # What is fe-NCNEWS?
 
-fe-NCNEWS is the frontend code which depends on the backend api created in be-NCNEWS.
+fe-NCNEWS is the frontend code which depends on the backend api created in be-NCNEWS. It is essentially designed to be a news website which you can interact with! What are the exciting things you can do in fe-NCNEWS you ask?
 
 ### Features
 
