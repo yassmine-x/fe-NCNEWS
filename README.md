@@ -18,7 +18,7 @@ Users can:
 
 The frontend was built with React and the styling was done using CSS.
 
-Upon cloning this repo, run "npm install" in order to install the relevant packages and dependencies. Then run "npm start" to view the app.
+Upon cloning this repo, run `npm install` in order to install the relevant packages and dependencies. Then run `npm start` to view the app.
 
 ## Final Words
 
