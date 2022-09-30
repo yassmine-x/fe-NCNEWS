@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 import IncVotes from "./IncVotes";
 import { Link } from "react-router-dom";
 import Comments from "./Comments";
-import PostComment from "./PostComment";
 
 export default function SingleArticle() {
   const { article_id, topic } = useParams();
   const [article, setArticle] = useState([]);
 
+  let user = "tickle122";
   useEffect(() => {
     fetchSingleArticle(article_id).then((articleObject) => {
       setArticle(articleObject);
@@ -28,16 +28,19 @@ export default function SingleArticle() {
           </li>
           <li className="no-bullet">{article.body}</li>
           <li className="no-bullet comments">
-            <Link to={`/topics/${topic}/${article_id}/comments`}>
+            <Link
+              to={
+                window.location.href.endsWith("/comments")
+                  ? `/topics/${topic}/${article_id}`
+                  : `/topics/${topic}/${article_id}/comments`
+              }
+            >
+              {window.location.href.endsWith("/comments") ? "hide" : null}{" "}
               comments:
             </Link>{" "}
             {article.comment_count}
           </li>
-          <li className="no-bullet">
-            <Link to={`/topics/${topic}/${article_id}/comments/post-comment`}>
-              post a comment
-            </Link>
-          </li>
+          <li className="no-bullet"></li>
         </ul>
         <div>
           {" "}
@@ -48,18 +51,16 @@ export default function SingleArticle() {
           />
         </div>
       </section>
-      <section>
+      {/* <section>
         {window.location.href.endsWith("/post-comment") ? (
-          <PostComment
-            article_id={article_id}
-            comment_count={article.comment_count}
-          />
+          <PostComment article_id={article_id} user={user} />
         ) : null}
-      </section>
+      </section> */}
       <section>
         {" "}
-        {window.location.href.endsWith("/comments") ? (
-          <Comments article_id={article_id} />
+        {window.location.href.endsWith("/comments") ||
+        window.location.href.endsWith("/post-comment") ? (
+          <Comments article_id={article_id} user={user} />
         ) : null}
       </section>
     </div>

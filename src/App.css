@@ -32,14 +32,22 @@
 
 .title {
   text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: pink;
+  font-size: 400%;
 }
 
 .nav {
   text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 200%;
 }
 
 .list-topics {
   list-style-type: none;
+  margin: 75px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 900%;
 }
 
 .list {
@@ -67,4 +75,10 @@
 .user-image-comments {
   max-height: 40px;
   max-width: auto;
+}
+
+.subheading {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: pink;
+  font-size: 200%;
 }

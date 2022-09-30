@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export default function IncVotes({ article_id, setArticle, votes }) {
   const [optimisticVotes, setOptimisticVotes] = useState(0);
+  const [disableButton, setDisableButton] = useState(false);
 
   function handleClick() {
     setOptimisticVotes((currOptimisticVotes) => {
@@ -12,6 +13,9 @@ export default function IncVotes({ article_id, setArticle, votes }) {
       .then((article) => {
         setArticle(article);
         setOptimisticVotes(0);
+      })
+      .then(() => {
+        setDisableButton(true);
       })
       .catch(() => {
         setOptimisticVotes(0);
@@ -27,6 +31,9 @@ export default function IncVotes({ article_id, setArticle, votes }) {
         setArticle(article);
         setOptimisticVotes(0);
       })
+      .then(() => {
+        setDisableButton(true);
+      })
       .catch(() => {
         setOptimisticVotes(0);
       });
@@ -34,8 +41,12 @@ export default function IncVotes({ article_id, setArticle, votes }) {
 
   return (
     <div>
-      <button onClick={handleClick}>Vote</button>
-      <button onClick={handleClick2}>Down Vote</button>
+      <button disabled={disableButton} onClick={handleClick}>
+        Vote
+      </button>
+      <button disabled={disableButton} onClick={handleClick2}>
+        Down Vote
+      </button>
       <p>Votes: {votes + optimisticVotes}</p>
     </div>
   );

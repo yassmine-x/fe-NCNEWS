@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { postCommentToDataBase } from "../api";
 
-export default function PostComment({ article_id }) {
+export default function PostComment({ article_id, user, setReloadComments }) {
   const [commentInput, setCommentInput] = useState({});
   const [message, setMessage] = useState("");
-
-  let user = "tickle122";
 
   function handlesChange(event) {
     setCommentInput({ user: user, body: event.target.value });
@@ -17,6 +15,7 @@ export default function PostComment({ article_id }) {
     setTimeout(() => {
       setMessage("");
     }, 1000);
+    setReloadComments(false);
   }
 
   return (

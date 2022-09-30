@@ -20,10 +20,6 @@ function App() {
           path="/topics/:topic/:article_id/comments"
           element={<SingleArticle />}
         />
-        <Route
-          path="/topics/:topic/:article_id/comments/post-comment"
-          element={<SingleArticle />}
-        />
       </Routes>
     </BrowserRouter>
   );

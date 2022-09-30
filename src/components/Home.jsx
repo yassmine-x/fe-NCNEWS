@@ -7,18 +7,23 @@ export default function Home() {
   const [articles, setArticles] = useState([]);
   const [query, setQuery] = useState("");
   const [ASCorDESC, setASCorDESC] = useState("DESC");
-  // const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const { topic } = useParams();
   useEffect(() => {
     fetchArticles(topic, query, ASCorDESC).then((articlesArray) => {
       setArticles(articlesArray);
+      setIsLoading(false);
     });
   }, [topic, query, ASCorDESC]);
 
+  if (isLoading) {
+    return <p>loading, please wait</p>;
+  }
+
   return (
     <div>
-      <h2>List of All Articles</h2>
+      <h2 className="subheading">List of All Articles</h2>
       <section>
         <h3>sort by:</h3>
         <button
@@ -105,3 +110,6 @@ can be sorted by any of these
 
 //if they click on any of the above buttons, concatenate "?sort_by=" + "button_name" and pass this down to the api
 //maybe onClick use setVariable and change them from empty strings to actual useful variables
+
+//add a button to only their comments. If username matches a comments user name.
+//

@@ -76,3 +76,10 @@ export const postCommentToDataBase = (article_id, commentInput) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const deleteComment = (comment_id) => {
+  console.log(comment_id);
+  return axios.delete(
+    `https://yassmine-app.herokuapp.com/api/comments/${comment_id}`
+  );
+};
