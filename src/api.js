@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchArticles = (topic, query, ASCorDESC) => {
   if (query) {
     return axios
-      .get(`https://yassmine-app.herokuapp.com/api/articles`, {
+      .get(`https://be-nc-news-58xv.onrender.com/api/articles`, {
         params: { sort_by: query, order: ASCorDESC || null, topic: topic },
       })
       .then(({ data }) => {
@@ -11,7 +11,7 @@ export const fetchArticles = (topic, query, ASCorDESC) => {
       });
   }
   return axios
-    .get(`https://yassmine-app.herokuapp.com/api/articles`, {
+    .get(`https://be-nc-news-58xv.onrender.com/api/articles`, {
       params: { topic: topic },
     })
     .then(({ data }) => {
@@ -21,7 +21,7 @@ export const fetchArticles = (topic, query, ASCorDESC) => {
 
 export const fetchTopics = () => {
   return axios
-    .get("https://yassmine-app.herokuapp.com/api/topics")
+    .get("https://be-nc-news-58xv.onrender.com/api/topics")
     .then(({ data }) => {
       return data.topics;
     });
@@ -29,7 +29,7 @@ export const fetchTopics = () => {
 
 export const fetchSingleArticle = (article_id) => {
   return axios
-    .get(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`)
+    .get(`https://be-nc-news-58xv.onrender.com/api/articles/${article_id}`)
     .then(({ data }) => {
       return data.article;
     });
@@ -37,7 +37,7 @@ export const fetchSingleArticle = (article_id) => {
 
 export const patchVotes = (article_id) => {
   return axios
-    .patch(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`, {
+    .patch(`https://be-nc-news-58xv.onrender.com/api/articles/${article_id}`, {
       inc_votes: 1,
     })
     .then(({ data }) => {
@@ -47,7 +47,7 @@ export const patchVotes = (article_id) => {
 
 export const patchDownVotes = (article_id) => {
   return axios
-    .patch(`https://yassmine-app.herokuapp.com/api/articles/${article_id}`, {
+    .patch(`https://be-nc-news-58xv.onrender.com/api/articles/${article_id}`, {
       inc_votes: -1,
     })
     .then(({ data }) => {
@@ -58,7 +58,7 @@ export const patchDownVotes = (article_id) => {
 export const fetchComments = (article_id) => {
   return axios
     .get(
-      `https://yassmine-app.herokuapp.com/api/articles/${article_id}/comments`
+      `https://be-nc-news-58xv.onrender.com/api/articles/${article_id}/comments`
     )
     .then(({ data }) => {
       return data.comments;
@@ -68,7 +68,7 @@ export const fetchComments = (article_id) => {
 export const postCommentToDataBase = (article_id, commentInput) => {
   return axios
     .post(
-      `https://yassmine-app.herokuapp.com/api/articles/${article_id}/comments`,
+      `https://be-nc-news-58xv.onrender.com/api/articles/${article_id}/comments`,
       commentInput
     )
     .then(({ data }) => {
@@ -80,6 +80,6 @@ export const postCommentToDataBase = (article_id, commentInput) => {
 export const deleteComment = (comment_id) => {
   console.log(comment_id);
   return axios.delete(
-    `https://yassmine-app.herokuapp.com/api/comments/${comment_id}`
+    `https://be-nc-news-58xv.onrender.com/api/comments/${comment_id}`
   );
 };
